@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>MyShop — Интернет-магазин</title> <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> </head> <body>
+<header>
+    <div class="logo">MyShop</div>
+
+    <nav>
+        <a href="/">Главная</a>
+        <a href="#products">Товары</a>
+        <a href="#about">О нас</a>
+    </nav>
+
+    <button class="cart">🛒 Корзина</button>
+</header>
+
+<section class="hero">
+    <h1>Добро пожаловать в MyShop!</h1>
+    <p>Лучшие товары по доступным ценам</p>
+    <a href="#products" class="button">Смотреть товары</a>
+</section>
+
+<section class="products" id="products">
+    <h2>Наши товары</h2>
+
+    <div class="product-container">
+
+        {% for product in products %}
+
+        <div class="product-card">
+
+            <img src="{{ product.image }}" alt="{{ product.name }}">
+
+            <h3>{{ product.name }}</h3>
+
+            <p class="price">${{ product.price }}</p>
+
+            <button onclick="alert('Товар добавлен в корзину!')">
+                Добавить в корзину
+            </button>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+</section>
+
+<section class="about" id="about">
+    <h2>О нашем магазине</h2>
+    <p>MyShop — современный интернет-магазин электроники.</p>
+</section>
+
+<footer>
+    <p>© 2026 MyShop. Все права защищены.</p>
+</footer>
+</body> </html>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    color: #222;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: white;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 15px;
+}
+
+button, .button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: #dbeafe;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.products {
+    padding: 60px 8%;
+    text-align: center;
+}
+
+.products h2 {
+    font-size: 32px;
+    margin-bottom: 35px;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    width: 280px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    margin: 15px 0;
+}
+
+.price {
+    color: #2563eb;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.about {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+}
+
+.about h2 {
+    margin-bottom: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #111827;
+    color: white;
+}
